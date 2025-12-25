@@ -29,7 +29,6 @@ body.onHm .google-search-container { display: none !important; }
    </div>
   </div>
 <script>
-<script>
 /* ✅ قراءة cx من رابط iframe */
 function getParam(name) {
   return new URLSearchParams(window.location.search).get(name);
@@ -37,3 +36,24 @@ function getParam(name) {
 const CSE_CX = getParam("cx") || "DEFAULT_CX_ID_HERE";
 function initializeSearch(){let e=document.querySelector(".search-input"),t=document.querySelector(".search-side-button"),s=document.querySelector(".clear-side-button"),l=document.querySelector("#gcse-results-placeholder"),n=document.querySelector(".search-loading");if(!e||!t||!s){console.error("Search elements not found");return}function r(t){if(!(t=t.trim())){e.focus();return}n&&(n.style.display="block"),l&&(l.innerHTML="");let s=document.createElement("div");if(s.className="gcse-searchresults-only",s.setAttribute("data-queryParameterName","search"),s.setAttribute("data-enableHistory","false"),l&&l.appendChild(s),window.google&&window.google.search&&window.google.search.cse)window.google.search.cse.element.render({div:s,tag:"searchresults-only"}),setTimeout(()=>{let e=document.querySelector("input.gsc-input");if(e){e.value=t,e.dispatchEvent(new Event("input",{bubbles:!0}));let s=document.querySelector(".gsc-search-button button");s&&s.click()}setTimeout(()=>{n&&(n.style.display="none")},2e3)},500);else{let r=`https://www.google.com/search?q=${encodeURIComponent(t)}`;window.open(r,"_blank"),n&&(n.style.display="none")}}function a(){e.value="",e.focus(),l&&(l.innerHTML=""),n&&(n.style.display="none"),s.classList.add("hidden")}let c=t=>{t.preventDefault(),r(e.value)};t.addEventListener("click",c),e.addEventListener("keydown",function(e){"Enter"===e.key&&(e.preventDefault(),r(this.value))}),s.addEventListener("click",a),e.addEventListener("input",function(){this.value.trim().length>0?s.classList.remove("hidden"):a()}),e.value.trim().length>0?s.classList.remove("hidden"):s.classList.add("hidden")}window.__gcse={parsetags:"onload",callback:initializeSearch},function(){let e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://cse.google.com/cse.js?cx=YOUR_CX_ID_HERE";let t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}(),setTimeout(()=>{window.google&&window.google.search||initializeSearch()},3e3);
 </script>
+<script>
+/* قراءة cx من الرابط أو استخدام القيمة الافتراضية */
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+const CSE_CX = getParam("cx") || "05321cdede9964b69:abcdefg"; // ضع هنا معرف CSE الخاص بك
+
+/* تحميل سكربت Google Custom Search */
+(function() {
+  const gcseScript = document.createElement("script");
+  gcseScript.type = "text/javascript";
+  gcseScript.async = true;
+  gcseScript.src = "https://cse.google.com/cse.js?cx=" + CSE_CX;
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(gcseScript, s);
+})();
+</script>
+
+<!-- عنصر البحث -->
+<div class="gcse-search"></div>

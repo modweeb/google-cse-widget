@@ -1,0 +1,39 @@
+<style>
+:root { --linkC: #3b82f6; --contentB: #ffffff; --contentBa: #f8fafc; --contentL: #e2e8f0; --notifB: #f1f5f9; --notifC: #64748b; --headerC: #1e293b; --bodyC: #334155; --bodyB: #ffffff; --iconC: #64748b; }
+body.onHm .google-search-container { display: none !important; }
+.BoxTool,.search-box{position:relative;background:var(--contentB)}.BoxTool{padding:13px;border-radius:9px;border:1px solid var(--contentL);margin-top:20px}.google-search-widget{width:100%;max-width:450px;margin:10px auto;padding:10px}.search-box{margin-bottom:10px;display:flex;align-items:center;gap:8px}.search-input{flex-grow:1;padding:10px 18px;font-size:12px;border:1px solid var(--linkC);border-radius:9px;background:var(--contentBa);color:var(--bodyC);box-sizing:border-box;transition:.3s;font-family:inherit;text-align:right;order:2}.clear-side-button,.search-side-button{padding:0;font-size:0;cursor:pointer;display:flex;transition:.3s;width:36px;height:36px}.search-input:focus{outline:0;box-shadow:0 0 0 2px rgba(59,130,246,.1)}.search-input::placeholder{color:var(--bodyC);font-size:10px}.search-side-button{order:1;color:#fff;background:var(--linkC);border:none;border-radius:18px;font-weight:500;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 3px rgba(59,130,246,.2)}.search-side-button:hover{background:#2563eb;transform:translateY(-1px);box-shadow:0 2px 6px rgba(59,130,246,.3)}.clear-side-button svg,.search-side-button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.clear-side-button{order:3;color:var(--notifC);background:var(--contentB);border:1px solid var(--contentL);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0}.clear-side-button:hover{background:var(--contentBa);color:var(--bodyC);border-color:var(--bodyC)}.clear-icon-inside,.clear-side-button.hidden,.search-icon-inside{display:none!important}.search-loading{display:none;text-align:center;padding:8px;color:var(--notifC);font-size:11px;margin-top:6px}#gcse-results-placeholder{margin-top:12px}.gsc-control-cse{padding:0!important;border:none!important;background:0 0!important}.gsc-results-wrapper-overlay{border:1px solid var(--contentB)!important;border-radius:6px!important;margin-top:10px!important;background:var(--contentB)!important}.gsc-webResult.gsc-result{padding:10px!important;border-bottom:1px solid var(--contentB)!important;background:var(--contentB)!important}.gsc-webResult.gsc-result:hover{background-color:var(--contentBa)!important}.gs-result .gs-title{color:var(--linkC)!important;font-size:13px!important;text-decoration:none!important;line-height:1.3!important}.gs-result .gs-title:hover{color:#2563eb!important;text-decoration:underline!important}.gs-result .gs-snippet{color:var(--bodyC)!important;font-size:12px!important;line-height:1.4!important;margin-top:4px!important}.gsc-url-top{color:var(--notifC)!important;font-size:10px!important;margin-bottom:3px!important}@media (max-width:480px){.google-search-widget{padding:8px}.search-input{padding:7px 10px;font-size:13px}.clear-side-button,.search-side-button{width:32px;height:32px}}
+</style>
+
+<div id="google-search-container" class="heroBox google-search-container">
+<p class="title dt"><b>بحث مخصص من جوجل</b></p>
+    <div class="BoxTool">
+<div class="google-search-widget">
+  <div class="search-box">
+    <button class="search-side-button" type="button" aria-label="بحث">
+      <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+    </button>
+    <input type="text" class="search-input" placeholder="يتم التحسين من خلال Google" aria-label="بحث" />
+    <div class="clear-side-button hidden" role="button" aria-label="مسح حقل البحث" tabindex="0">
+      <svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
+    </div>
+    <div class="search-icon-inside" role="button" aria-label="بحث" tabindex="0">
+      <svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+    </div>
+    <div class="clear-icon-inside" role="button" aria-label="مسح حقل البحث" tabindex="0">
+      <svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
+    </div>
+  </div>
+  <div class="search-loading">جاري تحميل النتائج...</div>
+  <div id="gcse-results-placeholder"></div>
+</div>
+   </div>
+  </div>
+<script>
+<script>
+/* ✅ قراءة cx من رابط iframe */
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+
+const CSE_CX = getParam("cx") || "DEFAULT_CX_ID_HERE";
+function initializeSearch(){let e=document.querySelector(".search-input"),t=document.querySelector(".search-side-button"),s=document.querySelector(".clear-side-button"),l=document.querySelector("#gcse-results-placeholder"),n=document.querySelector(".search-loading");if(!e||!t||!s){console.error("Search elements not found");return}function r(t){if(!(t=t.trim())){e.focus();return}n&&(n.style.display="block"),l&&(l.innerHTML="");let s=document.createElement("div");if(s.className="gcse-searchresults-only",s.setAttribute("data-queryParameterName","search"),s.setAttribute("data-enableHistory","false"),l&&l.appendChild(s),window.google&&window.google.search&&window.google.search.cse)window.google.search.cse.element.render({div:s,tag:"searchresults-only"}),setTimeout(()=>{let e=document.querySelector("input.gsc-input");if(e){e.value=t,e.dispatchEvent(new Event("input",{bubbles:!0}));let s=document.querySelector(".gsc-search-button button");s&&s.click()}setTimeout(()=>{n&&(n.style.display="none")},2e3)},500);else{let r=`https://www.google.com/search?q=${encodeURIComponent(t)}`;window.open(r,"_blank"),n&&(n.style.display="none")}}function a(){e.value="",e.focus(),l&&(l.innerHTML=""),n&&(n.style.display="none"),s.classList.add("hidden")}let c=t=>{t.preventDefault(),r(e.value)};t.addEventListener("click",c),e.addEventListener("keydown",function(e){"Enter"===e.key&&(e.preventDefault(),r(this.value))}),s.addEventListener("click",a),e.addEventListener("input",function(){this.value.trim().length>0?s.classList.remove("hidden"):a()}),e.value.trim().length>0?s.classList.remove("hidden"):s.classList.add("hidden")}window.__gcse={parsetags:"onload",callback:initializeSearch},function(){let e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://cse.google.com/cse.js?cx=YOUR_CX_ID_HERE";let t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}(),setTimeout(()=>{window.google&&window.google.search||initializeSearch()},3e3);
+</script>
